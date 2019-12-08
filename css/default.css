@@ -11,3 +11,6 @@ select {
   border-color: #ddd;
   font-size: 1em;
 }
+.modal {
+  color: #333;
+}

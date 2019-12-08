@@ -22,6 +22,7 @@
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
     <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/jquery-ui-timepicker-addon.css" rel="stylesheet">
     <link href="css/default.css" rel="stylesheet">
 
  
@@ -63,7 +64,8 @@
                   </div>
                 <from>
                   <div class="text-left">
-                    <p>Booking time: <input type="text" id="datepicker"></p>
+                    <p>Booking Time: <input type="text" id="datepicker"></p>
+                  <button class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal">Submit</button>
                   </div>
                  </from>
               </div>
@@ -80,47 +82,36 @@
 
     </div>
 
+    <!-- Order success -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Thanks for booking</h4>
+          </div>
+          <div class="modal-body">
+            <p>Booking detail:</p>
+            <p>2019/12/24</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery-ui-timepicker-addon.js"></script>
+    
     <script>
-    $(document).ready(function(){
-        $('#search_box').DataTable( {
-            searching: false,
-            "bLengthChange": false,
-            initComplete: function () {
-                this.api().columns().every( function () {
-                    var column = this;
-                    var select = $('<select><option value=""></option></select>')
-                        .appendTo( $(column.footer()).empty() )
-                        .on( 'change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-
-                            column
-                                .search( val ? '^'+val+'$' : '', true, false )
-                                .draw();
-                        } );
-
-                    column.data().unique().sort().each( function ( d, j ) {
-                        select.append( '<option value="'+d+'">'+d+'</option>' )
-                    } );
-                } );
-            }
-        } );
-    });
-
-    function filterData()
-    {
-        // your code
-    }
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true
+      
+    $('#datepicker').datetimepicker({
+        "timeFormat": "HH:mm"
     });
     </script>
   </body>
