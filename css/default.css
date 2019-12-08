@@ -1,0 +1,13 @@
+input,
+select {
+  background: #333;
+  border-color: #666;
+  font-size: 1em;
+}
+
+#ui-datepicker-div input,
+#ui-datepicker-div select {
+  background: #fff;
+  border-color: #ddd;
+  font-size: 1em;
+}
